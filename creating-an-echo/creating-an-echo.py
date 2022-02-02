@@ -6,7 +6,8 @@ import speech_recognition as sr
 
 CHUNK = 1024
 FORMAT = pyaudio.paInt16
-CHANNELS = 2
+#CHANNELS = 2
+CHANNELS = 1 # mac only accepts single channel
 RATE = 44100
 RECORD_SECONDS = 5
 WAVE_OUTPUT_FILENAME = "output.wav"
@@ -17,7 +18,8 @@ stream = p.open(format=FORMAT,
                 channels=CHANNELS,
                 rate=RATE,
                 input=True,
-                frames_per_buffer=CHUNK)
+                frames_per_buffer=CHUNK,
+		input_device_index=2) #on mac the 3rd input is mac microphone so index #2
 
 print("* recording")
 
